@@ -1,18 +1,17 @@
 defmodule Opml do
   @moduledoc """
+  Parser for _opml_ files.
   Documentation for Opml.
   """
 
   @doc """
-  Hello world.
+  Parse an opml document.
 
   ## Examples
 
-      iex> Opml.hello()
-      :world
+      iex> Opml.parse("<opml><body><outline text='Category'><outline text='Feed' xmlUrl='foo'/></outline></body></opml>")
+      {:ok, [{"Category", [{"Feed", "foo", nil}]}]}
 
   """
-  def hello do
-    :world
-  end
+  defdelegate parse(doc), to: Opml.Parser
 end
