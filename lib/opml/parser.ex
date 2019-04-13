@@ -39,6 +39,7 @@ defmodule Opml.Parser do
 
   defp start_outline(attrs, %{category: _} = acc) do
     text = find_attr(attrs, 'text')
+    # IO.puts("start_outline for feed #{text}")
     xml_url = find_attr(attrs, 'xmlUrl')
     html_url = find_attr(attrs, 'htmlUrl')
     feed = {text, xml_url, html_url}
@@ -50,11 +51,16 @@ defmodule Opml.Parser do
   defp start_outline(attrs, %{} = acc) do
     text = find_attr(attrs, 'text')
 
+    # IO.puts("start_outline for category #{text}")
+
     acc
     |> Map.put(:category, {text, []})
   end
 
   defp end_outline(%{feed: feed, category: {category, feeds}} = acc) do
+    # {feed_name, _, _} = feed
+    # IO.puts("end_outline for feed #{feed_name}")
+
     feeds = [feed | feeds]
 
     acc
@@ -64,6 +70,10 @@ defmodule Opml.Parser do
 
   defp end_outline(%{category: category, categories: categories} = acc) do
     categories = [category | categories]
+
+    # {category_name, _} = category
+    # IO.puts("end_outline for category #{category_name}")
+    # IO.inspect(category)
 
     acc
     |> Map.drop([:category])
