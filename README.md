@@ -15,7 +15,7 @@ The package can be installed by adding `opml_ex` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:opml_ex, git: "https://github.com/xlrl/opml_ex.git", tag: "0.1"}
+    {:opml_ex, git: "https://github.com/xlrl/opml_ex.git", tag: "0.1.0"}
   ]
 ```
 
@@ -61,7 +61,7 @@ Each category contains a list of feeds.
 
 ## Versioning
 
-We use [http://semver.org/](semver) for versioning. For the versions available, see the [tags/](tags on this repository).
+We use [http://semver.org/](semver) for versioning. For the versions available, see the tags on this repository.
 
 ## Authors
 
